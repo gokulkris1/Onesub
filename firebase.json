@@ -1,0 +1,24 @@
+
+{
+  "firestore": {
+    "rules": "firebase-backend/firestore.rules",
+    "indexes": "firebase-backend/firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "source": "firebase-backend/functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ]
+}
